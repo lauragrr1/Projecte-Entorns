@@ -1,8 +1,4 @@
 # Projecte DAM1 Entorns Desenvolupament "Adopta un gatito" - Mini sistema de adopcions de mascotes
-Requeriments:
-
-- Tot ha d'estar pujat al GitHub
-- Es poden fer grups de 2 o 3, NO es pot fer individualment.
 
 Tasques a fer:
 
