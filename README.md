@@ -1,4 +1,4 @@
-# Projecte DAM1 Entorns Desenvolupament
+# Projecte DAM1 Entorns Desenvolupament "Adopta un gatito" - Mini sistema de adopcions de mascotes
 Requeriments:
 
 - Tot ha d'estar pujat al GitHub
@@ -7,7 +7,27 @@ Requeriments:
 Tasques a fer:
 
 - Descripció del Projecte a fer.
+
+Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats disponibles, afegir-ne de nous i gestionar adopcions. El sistema disposa d’un backend en Python amb accés a una base de dades MySQL i una interfície web senzilla per interactuar-hi.
+
 - Requeriments tècnics
+
+    - Llenguatge: Python 3.x
+
+    - Base de dades: MySQL
+
+    - Backend: Flask o FastAPI (ideal per a APIs REST)
+
+    - Frontend: Wireframes (possibilitat d'ampliar amb HTML/CSS/JS)
+
+    - Entorn: Visual Studio Code
+
+    - Control de versions: Git + GitHub
+
+    - Tests: unittest
+
+
+
 - Planificació de tasques i assignació al GitHub (1 Sprint)
 - Model E/R
 - BBDD Mysql
