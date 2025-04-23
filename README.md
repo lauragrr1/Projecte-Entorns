@@ -62,6 +62,9 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 
 - 1 cas d'ús detallat a escollir
+
+(Afegir gat)
+
 - Diagrama de seqüència del Login
 - Wireframes del Login i les següents pantalles (mínim 1)
 - Desenvolupament d'una part petita.
