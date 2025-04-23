@@ -1,0 +1,40 @@
+erDiagram
+    USUARI ||--o{ ADOPCIO : realitza
+    GAT ||--|| ADOPCIO : és_adoptat
+    CENTRE_ACOLLIDA ||--o{ GAT : allotja
+
+    USUARI {
+        int id_usuari PK
+        string nom_complet
+        string email
+        string contrasenya
+        string telefon
+        enum rol "Administrador | Adoptant"
+    }
+
+    GAT {
+        int id_gat PK
+        string nom
+        int edat
+        string raça
+        enum sexe "Mascle | Femella"
+        boolean esterilitzat
+        boolean adoptat
+        date data_arribada
+        int id_centre FK
+    }
+
+    ADOPCIO {
+        int id_adopcio PK
+        int id_usuari FK
+        int id_gat FK
+        date data_adopcio
+        enum estat "Pendent | Confirmada | Cancel·lada"
+        string comentaris
+    }
+
+    CENTRE_ACOLLIDA {
+        int id_centre PK
+        string nom
+        string adreça
+    }
