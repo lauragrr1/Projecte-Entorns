@@ -46,6 +46,9 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 [Script BBDD](script.txt)
 
 - Diagrama d'arquitectura Client / Servidor
+
+![Diagrama Arquitectura](diagramaArquitectura.png)
+
 - Descripció dels End-points del WebService
 - Diagrama de classes del Backend
 - 1 cas d'ús detallat a escollir
