@@ -50,6 +50,14 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 ![Diagrama Arquitectura](diagramaArquitectura.png)
 
 - Descripció dels End-points del WebService
+
+| Mètode  |	Endpoint  |	Funció  |
+| -------- | -------- | -------- | 
+| GET  |	/gats  |	Llistar gats disponibles |
+| POST |	/gats	| Afegir un nou gat |
+| PUT	| /adoptar/<id>	 |Marcar un gat com adoptat |
+| POST	 | /login	 |Login d'usuari |
+
 - Diagrama de classes del Backend
 - 1 cas d'ús detallat a escollir
 - Diagrama de seqüència del Login
