@@ -42,6 +42,9 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 ![ER](entitat_relacio.png)
 
 - BBDD Mysql
+
+[Script BBDD](script.txt)
+
 - Diagrama d'arquitectura Client / Servidor
 - Descripció dels End-points del WebService
 - Diagrama de classes del Backend
