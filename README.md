@@ -59,6 +59,9 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 | POST	 | /login	 |Login d'usuari |
 
 - Diagrama de classes del Backend
+
+
+
 - 1 cas d'ús detallat a escollir
 - Diagrama de seqüència del Login
 - Wireframes del Login i les següents pantalles (mínim 1)

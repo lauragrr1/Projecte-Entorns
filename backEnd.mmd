@@ -1,0 +1,38 @@
+classDiagram
+direction BT
+    class Usuari {
+	    +int id_usuari
+	    +string nom_complet
+	    +string email
+	    +string contrasenya
+	    +string telefon
+	    +string rol
+    }
+    class Gat {
+	    +int id_gat
+	    +string nom
+	    +int edat
+	    +string raça
+	    +string sexe
+	    +boolean esterilitzat
+	    +boolean adoptat
+	    +date data_arribada
+	    +int id_centre
+    }
+    class Centre_Acollida {
+	    +int id_centre
+	    +string nom
+	    +string adreça
+    }
+    class Adopcio {
+	    +int id_adopcio
+	    +int id_usuari
+	    +int id_gat
+	    +date data_adopcio
+	    +string estat
+	    +string comentaris
+    }
+
+    Usuari -- Adopcio : realitza
+    Gat -- Adopcio : és_adoptat
+    Centre_Acollida -- Gat : allotja
