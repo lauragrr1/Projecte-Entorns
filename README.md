@@ -39,6 +39,7 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 - Model E/R
 
+![ER](entitat_relacio.png)
 
 - BBDD Mysql
 - Diagrama d'arquitectura Client / Servidor
