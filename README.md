@@ -60,7 +60,7 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 - Diagrama de classes del Backend
 
-![BackEnd](backEnd.png)
+
 
 - 1 cas d'ús detallat a escollir
 - Diagrama de seqüència del Login
