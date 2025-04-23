@@ -24,6 +24,21 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 - Planificació de tasques i assignació al GitHub (1 Sprint)
 
+
+| Tasca         | Responsable   |  Estimat      |
+| ------------- | ------------- | ------------- |
+| Crear repositori GitHub  |  |       0.5h        |
+| Model E/R | Content Cell  |        	1h       |
+| Crear BBDD MySQL  | Content Cell  |         	1h      |
+|Endpoints inicials (GET, POST) | Content Cell  |       	2h        |
+| Diagrama d’arquitectura  | Content Cell  |        	1h       |
+| Login + Wireframe  | Content Cell  |       	1h        |
+| Desenvolupament part backend  | Content Cell  |       2h        |
+| Tests unitaris	|           |        	1h   |
+
+
+
+
 - Model E/R
 - BBDD Mysql
 - Diagrama d'arquitectura Client / Servidor
