@@ -1,4 +1,3 @@
 flowchart LR
-    Client[Navegador / Client Web] --> |HTTP (JSON)| API[Flask / FastAPI (Backend)]
-    API -->|SQL| BBDD[(MySQL)]
-
+    Client[Navegador o Client Web] -->|HTTP JSON| API[Servidor Python - Flask o FastAPI]
+    API -->|Consultes SQL| BBDD[Base de Dades MySQL]
