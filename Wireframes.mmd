@@ -1,22 +1,54 @@
 flowchart TB
-    %% Primera pantalla: Login
-    subgraph Pantalla_Login["🖥️ Pantalla 1: Login"]
-        direction TB
-        L1[Email]
-        L2[Input de text]
-        L3[Contrasenya]
-        L4[Input de text]
-        L5[Botó Login]
-    end
+ subgraph Pantalla_Login["🖥️ Pantalla 1: Login"]
+    direction TB
+        L1["Email"]
+        L2["Input de text"]
+        L3["Contrasenya"]
+        L4["Input de text"]
+        L5["Botó Login"]
+  end
 
-    %% Segona pantalla: Menú principal
-    subgraph Pantalla_Menu["🖥️ Pantalla 2: Menú Principal"]
-        direction TB
-        M1[Veure Gats Disponibles]
-        M2[Afegir Nou Gat]
-        M3[Gestionar Adopcions]
-    end
+ subgraph Pantalla_Error["🖥️ Pantalla 2: Error credencials"]
+ direction TB
+        L6["Missatge d'error: Credencials incorrectes"]
+  end
+  
+ subgraph Pantalla_Menu["🖥️ Pantalla 2: Menú Principal"]
+    direction TB
+        M1["Veure Gats Disponibles"]
+        M2["Afegir Nou Gat"]
+        M3["Gestionar Adopcions"]
+  end
+  
+    L5 -- Login correcte --> Pantalla_Menu
+    L5 -- Login incorrecte --> Pantalla_Error
+    Pantalla_Error --> Pantalla_Login
 
-    %% Flux de navegació
-    Pantalla_Login -->|Login correcte| Pantalla_Menu
-    Pantalla_Login -->|Login incorrecte| L1
+
+
+classDiagram
+    class PantallaLogin {
+        +String email
+        +String contrasenya
+        +mostrar()
+        +validar_credenciales()
+    }
+    
+    class PantallaError {
+        +String mensaje_error
+        +mostrar()
+    }
+    
+    class PantallaMenu {
+        +List opciones
+        +mostrar()
+    }
+    
+    class SistemaAdopcionGatos {
+        +PantallaLogin pantalla_login
+        +PantallaError pantalla_error
+        +PantallaMenu pantalla_menu
+        +iniciar_sistema()
+    }
+
+    PantallaLogin --> PantallaMenu : Login correc
