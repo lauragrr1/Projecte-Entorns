@@ -1,0 +1,24 @@
+graph TD
+    %% Pantalles principals del front-end
+    Inici["🏠 Pàgina d'inici"]
+    VeureGats["😺 Llistat de Gats Disponibles"]
+    AfegirGat["➕ Formulari Afegir Gat"]
+    GestionarAdopcions["📋 Gestió d'Adopcions"]
+    Login["🔐 Login Usuari"]
+    PerfilUsuari["👤 Perfil Usuari"]
+
+    %% Relacions entre pantalles
+    Inici --> VeureGats
+    Inici --> Login
+    Login --> PerfilUsuari
+    PerfilUsuari --> GestionarAdopcions
+    PerfilUsuari --> AfegirGat
+
+    %% Relacions amb entitats del sistema
+    VeureGats -->|Consulta| Gat[(Taula gat)]
+    AfegirGat -->|Inserta| Gat
+    GestionarAdopcions -->|Consulta / Afegeix / Elimina| Adopcio[(Taula adopcio)]
+    GestionarAdopcions -->|Consulta| Usuari[(Taula usuari)]
+    GestionarAdopcions -->|Consulta| Gat
+    PerfilUsuari -->|Consulta| Usuari
+    Gat -->|Pertany a| Centro[(Taula centro)]
