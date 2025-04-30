@@ -62,6 +62,8 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 ![BackEnd](backEnd.png)
 
+- Diagrama de classes del Frontend
+
 - 1 cas d'ús detallat a escollir
 
 (Afegir gat)
