@@ -76,5 +76,9 @@ Usuari → Client Web → POST /login → Backend → MySQL
 
 
 - Wireframes del Login i les següents pantalles (mínim 1)
+
+Pantalla inicial
+![Login](Login.png)
+
 - Desenvolupament d'una part petita.
 - Tests unitaris de la part programada
