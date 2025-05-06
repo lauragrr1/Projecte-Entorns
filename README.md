@@ -70,6 +70,11 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 (Afegir gat)
 
 - Diagrama de seqüència del Login
+
+Usuari → Client Web → POST /login → Backend → MySQL
+                             ← token / error
+
+
 - Wireframes del Login i les següents pantalles (mínim 1)
 - Desenvolupament d'una part petita.
 - Tests unitaris de la part programada
