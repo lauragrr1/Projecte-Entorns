@@ -1,6 +1,5 @@
 # Projecte DAM1 Entorns Desenvolupament "Adopta un gatito" - Mini sistema de adopcions de mascotes
 
-Tasques a fer:
 
 - Descripció del Projecte a fer.
 
