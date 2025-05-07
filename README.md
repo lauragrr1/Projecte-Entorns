@@ -1,6 +1,6 @@
 # Projecte DAM1 Entorns Desenvolupament "Adopta un Gatito 🐾" - Mini sistema de adopcions de mascotes
 
-- Descripció del Projecte
+## - Descripció del Projecte
 
 L'aplicació Adopta un Gatito és una eina digital dissenyada per facilitar i gestionar el procés d’adopció de gats de manera senzilla i accessible. Està pensada per a refugis, protectores i persones voluntàries que vulguin gestionar els animals disponibles per a l’adopció, així com per a usuaris interessats en donar una nova llar a un gat.
 
@@ -36,25 +36,25 @@ L’aplicació està basada en una arquitectura client-servidor:
 
     - Permet a l’usuari interactuar amb les funcionalitats del sistema de manera intuïtiva i responsive.
 
-- [Requeriments Tècnics](req-tecnics.md)
+## - [Requeriments Tècnics](req-tecnics.md)
 
-- Planificació de tasques i assignació al GitHub 
+## - Planificació de tasques i assignació al GitHub 
 
 https://github.com/users/lauragrr1/projects/10 
 
-- Model E/R
+## - Model E/R
 
 ![ER](entitat_relacio.png)
 
-- BBDD Mysql
+## - BBDD Mysql
 
 [Script BBDD](script.txt)
 
-- Diagrama d'arquitectura Client / Servidor
+## - Diagrama d'arquitectura Client / Servidor
 
 ![Diagrama d'arquitectura](diagramaArquitectura.png)
 
-- Descripció dels End-points del WebService
+## - Descripció dels End-points del WebService
 
 | Mètode  |	Endpoint  |	Funció  |
 | -------- | -------- | -------- | 
@@ -63,25 +63,25 @@ https://github.com/users/lauragrr1/projects/10
 | PUT	| /adoptar/<id>	 |Marcar un gat com adoptat |
 | POST	 | /login	 |Login d'usuari |
 
-- Diagrama de classes del Backend
+## - Diagrama de classes del Backend
 
 ![BackEnd](backEnd.png)
 
-- Diagrama de classes del Frontend
+## - Diagrama de classes del Frontend
 
 - ![FrontEnd](frontEnd.PNG)
 
-- 1 cas d'ús detallat a escollir
+## - 1 cas d'ús detallat a escollir
 
 (Afegir gat)
 
-- Diagrama de seqüència del Login
+## - Diagrama de seqüència del Login
 
 Usuari → Client Web → POST /login → Backend → MySQL
                              ← token / error
 
 
-- Wireframes del Login i les següents pantalles (mínim 1)
+## - Wireframes del Login i les següents pantalles (mínim 1)
 
 Pantalla inicial
 ![Login](Login.png)
