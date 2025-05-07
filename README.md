@@ -8,7 +8,7 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 
 - Planificació de tasques i assignació al GitHub 
 
-https://github.com/users/lauragrr1/projects/10 
+    https://github.com/users/lauragrr1/projects/10 
 
 - Model E/R
 
