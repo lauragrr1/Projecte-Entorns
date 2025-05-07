@@ -38,7 +38,7 @@ L’aplicació està basada en una arquitectura client-servidor:
 
 ## - Requeriments Tècnics
 
-Requeriments Backend, Frontend, generals, d'infraestructura i del procés de desenvolupament
+Requeriments Backend, Frontend, generals, d'infraestructura i del procés de desenvolupament.
 
 [req-tecnics.md](req-tecnics.md)
 
