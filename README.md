@@ -36,7 +36,11 @@ L’aplicació està basada en una arquitectura client-servidor:
 
     - Permet a l’usuari interactuar amb les funcionalitats del sistema de manera intuïtiva i responsive.
 
-## - [Requeriments Tècnics](req-tecnics.md)
+## - Requeriments Tècnics
+
+Requeriments Backend, Frontend, generals, d'infraestructura i del procés de desenvolupament
+
+[req-tecnics.md](req-tecnics.md)
 
 ## - Planificació de tasques i assignació al GitHub 
 
