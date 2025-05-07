@@ -20,7 +20,7 @@ https://github.com/users/lauragrr1/projects/10
 
 - Diagrama d'arquitectura Client / Servidor
 
-![Diagrama Arquitectura](diagramaArquitectura.png)
+![Diagrama d'arquitectura](diagramaArquitectura.png)
 
 - Descripció dels End-points del WebService
 
