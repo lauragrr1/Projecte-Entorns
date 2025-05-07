@@ -4,9 +4,7 @@
 
 Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats disponibles, afegir-ne de nous i gestionar adopcions. El sistema disposa d’un backend en Python amb accés a una base de dades MySQL i una interfície web senzilla per interactuar-hi.
 
-- Requeriments tècnics
-
-[Requeriments Tècnics](req-tecnics.md)
+- [Requeriments Tècnics](req-tecnics.md)
 
 - Planificació de tasques i assignació al GitHub 
 
