@@ -1,4 +1,4 @@
-# Projecte DAM1 Entorns Desenvolupament "Adopta un Gatito 🐾 " - Mini sistema de adopcions de mascotes
+# Projecte DAM1 Entorns Desenvolupament "Adopta un Gatito 🐾" - Mini sistema de adopcions de mascotes
 
 - Descripció del Projecte
 
@@ -35,7 +35,7 @@ L’aplicació està basada en una arquitectura client-servidor:
     - Interfície web senzilla basada en wireframes, amb possibilitat d'ampliació utilitzant HTML, CSS i JavaScript.
 
     - Permet a l’usuari interactuar amb les funcionalitats del sistema de manera intuïtiva i responsive.
-    
+
 - [Requeriments Tècnics](req-tecnics.md)
 
 - Planificació de tasques i assignació al GitHub 
