@@ -1,54 +1,64 @@
-# Projecte DAM1 Entorns Desenvolupament "Adopta un gatito" - Mini sistema de adopcions de mascotes
+# Projecte DAM1 Entorns Desenvolupament "Adopta un Gatito 🐾" - Mini sistema de adopcions de mascotes
 
+## - Descripció del Projecte
 
-- Descripció del Projecte a fer.
+L'aplicació Adopta un Gatito és una eina digital dissenyada per facilitar i gestionar el procés d’adopció de gats de manera senzilla i accessible. Està pensada per a refugis, protectores i persones voluntàries que vulguin gestionar els animals disponibles per a l’adopció, així com per a usuaris interessats en donar una nova llar a un gat.
 
-Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats disponibles, afegir-ne de nous i gestionar adopcions. El sistema disposa d’un backend en Python amb accés a una base de dades MySQL i una interfície web senzilla per interactuar-hi.
+### Funcionalitats principals
+ - Consulta de gats disponibles: els usuaris poden visualitzar un llistat de gats que actualment estan disponibles per a ser adoptats, amb informació detallada com el nom, l’edat, el sexe, la descripció i una imatge representativa.
 
-- Requeriments tècnics
+ - Afegir nous gats: els administradors poden registrar nous gats al sistema mitjançant un formulari, incloent-hi les seves característiques i estat d’adopció.
 
-    - Llenguatge: Python 3.x
+ - Gestió d’adopcions: els usuaris poden sol·licitar l’adopció d’un gat. El sistema permet al personal responsable validar, rebutjar o confirmar aquestes sol·licituds, mantenint un registre d’adopcions realitzades.
 
-    - Base de dades: MySQL
+ - Gestió d’usuaris: el sistema inclou funcionalitats bàsiques d’autenticació i autorització. Els rols principals són:
 
-    - Backend: Flask o FastAPI (ideal per a APIs REST)
+    - Visitants: poden consultar el catàleg de gats.
 
-    - Frontend: Wireframes (possibilitat d'ampliar amb HTML/CSS/JS)
+    - Usuaris registrats: poden iniciar sessió i sol·licitar adopcions.
 
-    - Entorn: Visual Studio Code
+    - Administradors: poden afegir o eliminar gats i gestionar les adopcions.
 
-    - Control de versions: Git + GitHub
+### Arquitectura tècnica
+L’aplicació està basada en una arquitectura client-servidor:
 
-    - Tests: unittest
+ - Backend:
 
-- Planificació de tasques i assignació al GitHub (1 Sprint)
+    - Desenvolupat en Python utilitzant Flask o FastAPI per oferir serveis web RESTful.
 
+    - S'encarrega de la lògica de negoci, la validació de dades i la persistència a la base de dades.
 
-| Tasca         | Responsable   |  Estimat      |
-| ------------- | ------------- | ------------- |
-| Crear repositori GitHub  |  |       0.5h        |
-| Model E/R |   |        	1h       |
-| Crear BBDD MySQL  |   |         	1h      |
-|Endpoints inicials (GET, POST) |   |       	2h        |
-| Diagrama d’arquitectura  |   |        	1h       |
-| Login + Wireframe  |   |       	1h        |
-| Desenvolupament part backend  |   |       2h        |
-| Tests unitaris	|           |        	1h   |
+    - Connecta amb una base de dades MySQL, on s'emmagatzemen les dades dels gats, usuaris i adopcions.
 
+- Frontend:
 
-- Model E/R
+    - Interfície web senzilla basada en wireframes, amb possibilitat d'ampliació utilitzant HTML, CSS i JavaScript.
+
+    - Permet a l’usuari interactuar amb les funcionalitats del sistema de manera intuïtiva i responsive.
+
+## - Requeriments Tècnics
+
+Requeriments Backend, Frontend, generals, d'infraestructura i del procés de desenvolupament.
+
+[req-tecnics.md](req-tecnics.md)
+
+## - Planificació de tasques i assignació al GitHub 
+
+https://github.com/users/lauragrr1/projects/10 
+
+## - Model E/R
 
 ![ER](entitat_relacio.png)
 
-- BBDD Mysql
+## - BBDD Mysql
 
-[Script BBDD](script.txt)
+[Base de Dades](App/basedatos.py)
 
-- Diagrama d'arquitectura Client / Servidor
+## - Diagrama d'arquitectura Client / Servidor
 
-![Diagrama Arquitectura](diagramaArquitectura.png)
+![Diagrama d'arquitectura](diagramaArquitectura.png)
 
-- Descripció dels End-points del WebService
+## - Descripció dels End-points del WebService
 
 | Mètode  |	Endpoint  |	Funció  |
 | -------- | -------- | -------- | 
@@ -57,25 +67,25 @@ Aplicació per gestionar l'adopció de gats. Els usuaris poden veure els gats di
 | PUT	| /adoptar/<id>	 |Marcar un gat com adoptat |
 | POST	 | /login	 |Login d'usuari |
 
-- Diagrama de classes del Backend
+## - Diagrama de classes del Backend
 
 ![BackEnd](backEnd.png)
 
-- Diagrama de classes del Frontend
+## - Diagrama de classes del Frontend
 
 - ![FrontEnd](frontEnd.PNG)
 
-- 1 cas d'ús detallat a escollir
+## - 1 cas d'ús detallat a escollir
 
 (Afegir gat)
 
-- Diagrama de seqüència del Login
+## - Diagrama de seqüència del Login
 
 Usuari → Client Web → POST /login → Backend → MySQL
                              ← token / error
 
 
-- Wireframes del Login i les següents pantalles (mínim 1)
+## - Wireframes del Login i les següents pantalles (mínim 1)
 
 Pantalla inicial
 ![Login](Login.png)
