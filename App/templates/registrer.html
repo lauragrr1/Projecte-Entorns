@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Registra't</h2>
+    <form method="POST">
+        Nom complet: <input type="text" name="nom"><br>
+        Email: <input type="email" name="email"><br>
+        Contrasenya: <input type="password" name="contrasenya"><br>
+        <button type="submit">Registrar</button>
+    </form>
+</body>
+</html>
