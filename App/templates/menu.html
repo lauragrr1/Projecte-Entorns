@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h2>📋 Menú Principal</h2>
+    <ul>
+        <li><a href="/llistat">1. Veure llistat de gats</a></li>
+        <li><a href="/afegir">2. Afegir un gat</a></li>
+        {% if session['rol'] == 'admin' %}
+            <li><a href="/adopcions">3. Controlar adopcions</a></li>
+        {% endif %}
+        <li><a href="/logout">Sortir</a></li>
+    </ul>
+</body>
+</html>

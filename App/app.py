@@ -1,85 +1,130 @@
-from flask import Flask, render_template, request, redirect, session, flash
-from db_config import get_connection
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, session, url_for
+import mysql.connector
 
 app = Flask(__name__)
-app.secret_key = 'gatitos-secret'
+app.secret_key = 'gatitos_clau'
+
+# Configuración de conexión
+DB_CONFIG = {
+    'host': 'localhost',
+    'user': 'root',
+    'password': 'root',
+    'database': 'SistemaAdopcions'
+}
+
+def get_connection():
+    return mysql.connector.connect(**DB_CONFIG)
 
 @app.route('/')
 def index():
-    return redirect('/login')
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        contrasenya = request.form['contrasenya']
-
-        conn = get_connection()
-        cur = conn.cursor(dictionary=True)
-        cur.execute("SELECT * FROM usuari WHERE email = %s", (email,))
-        usuari = cur.fetchone()
-        conn.close()
-
-        if usuari and usuari['contrasenya'] == contrasenya:
-            session['usuari'] = usuari
-            return redirect('/dashboard')
-        else:
-            flash("Credencials incorrectes.")
-            return redirect('/login')
     return render_template('login.html')
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form['email']
+    password = request.form['contrasenya']
+
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM usuari WHERE email=%s AND contrasenya=%s", (email, password))
+    usuari = cursor.fetchone()
+    conn.close()
+
+    if usuari:
+        session['usuari'] = usuari
+        return redirect(url_for('menu'))
+    else:
+        return render_template('login.html', error="Credencials incorrectes")
+
+@app.route('/menu')
+def menu():
+    if 'usuari' not in session:
+        return redirect(url_for('index'))
+    return render_template('menu.html', usuari=session['usuari'])
+
+@app.route('/llistat')
+def llistat():
+    if 'usuari' not in session:
+        return redirect(url_for('index'))
+
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM gat")
+    gats = cursor.fetchall()
+    conn.close()
+
+    return render_template('llistat.html', gats=gats)
+
+@app.route('/afegir', methods=['GET', 'POST'])
+def afegir():
+    if 'usuari' not in session:
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
-        nom = request.form['nom']
-        email = request.form['email']
-        contrasenya = request.form['contrasenya']
+        dades = (
+            request.form['nom'],
+            request.form['edat'],
+            request.form['raca'],
+            request.form['sexe'],
+            request.form.get('esterilitzat') == 'on',
+            request.form['data_arribada'],
+            request.form['id_centre']
+        )
 
         conn = get_connection()
-        cur = conn.cursor()
-        try:
-            cur.execute("INSERT INTO usuari (nom_complet, email, contrasenya, telefon, rol) VALUES (%s, %s, %s, '', 'usuari')",
-                        (nom, email, contrasenya))
-            conn.commit()
-            flash("Usuari registrat correctament.")
-        except:
-            flash("Aquest email ja està registrat.")
+        cursor = conn.cursor()
+        cursor.execute("""
+            INSERT INTO gat (nom, edat, raca, sexe, esterilitzat, adoptat, data_arribada, id_centre)
+            VALUES (%s, %s, %s, %s, %s, false, %s, %s)
+        """, dades)
+        conn.commit()
         conn.close()
-        return redirect('/login')
-    return render_template('register.html')
 
-@app.route('/dashboard')
-def dashboard():
-    if 'usuari' not in session:
-        return redirect('/login')
+        return redirect(url_for('llistat'))
+    else:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM centre_acollida")
+        centres = cursor.fetchall()
+        conn.close()
+        return render_template('afegir.html', centres=centres)
 
-    return render_template('dashboard.html', usuari=session['usuari'])
-
-@app.route('/afegir_gat', methods=['POST'])
-def afegir_gat():
+@app.route('/adopcions', methods=['GET', 'POST'])
+def adopcions():
     if 'usuari' not in session or session['usuari']['rol'] != 'admin':
-        return "No autoritzat", 403
+        return redirect(url_for('index'))
 
-    dades = request.form
     conn = get_connection()
-    cur = conn.cursor()
-    cur.execute("""
-        INSERT INTO gat (nom, edat, raca, sexe, esterilitzat, adoptat, data_arribada, id_centre)
-        VALUES (%s, %s, %s, %s, %s, 0, %s, %s)
-    """, (
-        dades['nom'], dades['edat'], dades['raca'], dades['sexe'],
-        dades['esterilitzat'], dades['data_arribada'], dades['id_centre']
-    ))
-    conn.commit()
-    conn.close()
-    flash("Gat afegit correctament.")
-    return redirect('/dashboard')
+    cursor = conn.cursor(dictionary=True)
 
-@app.route('/logout')
-def logout():
+    if request.method == 'POST':
+        cursor.execute("""
+            UPDATE gat SET nom=%s, edat=%s, raca=%s, sexe=%s, esterilitzat=%s, adoptat=%s, data_arribada=%s, id_centre=%s
+            WHERE id_gat=%s
+        """, (
+            request.form['nom'],
+            request.form['edat'],
+            request.form['raca'],
+            request.form['sexe'],
+            request.form.get('esterilitzat') == 'on',
+            request.form.get('adoptat') == 'on',
+            request.form['data_arribada'],
+            request.form['id_centre'],
+            request.form['id_gat']
+        ))
+        conn.commit()
+
+    cursor.execute("SELECT * FROM gat")
+    gats = cursor.fetchall()
+    cursor.execute("SELECT * FROM centre_acollida")
+    centres = cursor.fetchall()
+    conn.close()
+    return render_template('adopcions.html', gats=gats, centres=centres)
+
+@app.route('/sortir')
+def sortir():
     session.clear()
-    return redirect('/login')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

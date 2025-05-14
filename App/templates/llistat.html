@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Llistat de Gats</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h2>🐱 Gats disponibles</h2>
+    <table>
+        <tr><th>Nom</th><th>Edat</th><th>Raça</th><th>Sexe</th><th>Esterilitzat</th><th>Adoptat</th><th>Data Arribada</th><th>Centre</th></tr>
+        {% for gat in gats %}
+            <tr>
+                <td>{{ gat[1] }}</td>
+                <td>{{ gat[2] }}</td>
+                <td>{{ gat[3] }}</td>
+                <td>{{ gat[4] }}</td>
+                <td>{{ 'Sí' if gat[5] else 'No' }}</td>
+                <td>{{ 'Sí' if gat[6] else 'No' }}</td>
+                <td>{{ gat[7] }}</td>
+                <td>{{ gat[8] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/menu">Tornar al menú</a>
+</body>
+</html>

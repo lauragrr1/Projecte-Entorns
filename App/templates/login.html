@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="ca">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Iniciar Sessió</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h2>Inicia sessió</h2>
-    <form method="POST">
-        Email: <input type="email" name="email"><br>
-        Contrasenya: <input type="password" name="contrasenya"><br>
+    <h2>Iniciar Sessió</h2>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form action="/login" method="post">
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        <label>Contrasenya:</label>
+        <input type="password" name="contrasenya" required><br>
         <button type="submit">Entrar</button>
     </form>
-    <p>No tens compte? <a href="/register">Registra't</a></p>
 </body>
 </html>
