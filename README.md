@@ -52,7 +52,7 @@ https://github.com/users/lauragrr1/projects/10
 
 ## - BBDD Mysql
 
-[Script BBDD](script.txt)
+[Base de Dades](App/basedatos.py)
 
 ## - Diagrama d'arquitectura Client / Servidor
 
