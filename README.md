@@ -88,7 +88,7 @@ Pantalla inicial
 ![LogIn](<login (1).png>)
 
 
-- Tests unitaris de la part programada
+## - Tests unitaris de la part programada
 
 [Codi Test Unitaris](App/test_app.py)
 
