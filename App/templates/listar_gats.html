@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Llista de Gats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Llista de Gats</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Edat</th>
+                <th>Raça</th>
+                <th>Sexe</th>
+                <th>Esterilitzat</th>
+                <th>Adoptat</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gat in gats %}
+        <tr>
+            <td>{{ gat.nom }}</td>
+            <td>{{ gat.edat }}</td>
+            <td>{{ gat.raca }}</td>
+            <td>{{ gat.sexe }}</td>
+            <td>{{ 'Sí' if gat.esterilitzat else 'No' }}</td>
+            <td>{{ 'Sí' if gat.adoptat else 'No' }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('menu') }}" class="volver-menu">Tornar al menú</a>
+</div>
+</body>
+</html>

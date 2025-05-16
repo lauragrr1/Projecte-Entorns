@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestionar Adopcions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Gestionar Adopcions (Admin)</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Edat</th>
+          <th>Raça</th>
+          <th>Sexe</th>
+          <th>Esterilitzat</th>
+          <th>Adoptat</th>
+          <th>Data Arribada</th>
+          <th>Accions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for gat in gats %}
+        <tr>
+          <td>{{ gat.nom }}</td>
+          <td>{{ gat.edat }}</td>
+          <td>{{ gat.raca }}</td>
+          <td>{{ gat.sexe }}</td>
+          <td>{{ 'Sí' if gat.esterilitzat else 'No' }}</td>
+          <td>{{ 'Sí' if gat.adoptat else 'No' }}</td>
+          <td>{{ gat.data_arribada }}</td>
+          <td><a href="{{ url_for('editar_gat', id_gat=gat.id_gat) }}" class="btn-editar">Editar</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ url_for('menu') }}" class="volver-menu">Tornar al menú</a>
+  </div>
+</body>
+</html>

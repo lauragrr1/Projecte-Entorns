@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Gat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Editar Gat: {{ gat.nom }}</h1>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST">
+        <input type="text" name="nom" value="{{ gat.nom }}" required>
+        <input type="number" name="edat" value="{{ gat.edat }}" required>
+        <input type="text" name="raca" value="{{ gat.raca }}" required>
+        <select name="sexe">
+            <option value="Mascle" {% if gat.sexe == 'Mascle' %}selected{% endif %}>Mascle</option>
+            <option value="Femella" {% if gat.sexe == 'Femella' %}selected{% endif %}>Femella</option>
+        </select>
+        <label>
+            <input type="checkbox" name="esterilitzat" {% if gat.esterilitzat %}checked{% endif %}> Esterilitzat
+        </label>
+        <label>
+            <input type="checkbox" name="adoptat" {% if gat.adoptat %}checked{% endif %}> Adoptat
+        </label>
+        <input type="date" name="data_arribada" value="{{ gat.data_arribada }}">
+        <select name="id_centre">
+            {% for centre in centres %}
+            <option value="{{ centre.id_centre }}" {% if centre.id_centre == gat.id_centre %}selected{% endif %}>{{ centre.nom }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Actualitzar</button>
+    </form>
+    <a href="{{ url_for('menu') }}" class="volver-menu">Tornar al menú</a>
+</div>
+</body>
+</html>

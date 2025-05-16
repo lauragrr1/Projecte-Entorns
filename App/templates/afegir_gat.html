@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Afegir Gat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Afegir Nou Gat</h1>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+        <div class="success">{{ success }}</div>
+    {% endif %}
+    <form method="POST">
+        <input name="nom" type="text" placeholder="Nom del gat" required>
+        <input name="edat" type="number" placeholder="Edat" required>
+        <input name="raca" type="text" placeholder="Raça" required>
+        <select name="sexe">
+            <option value="Mascle">Mascle</option>
+            <option value="Femella">Femella</option>
+        </select>
+        <label>
+            <input type="checkbox" name="esterilitzat"> Esterilitzat
+        </label>
+        <label>
+            <input type="checkbox" name="adoptat"> Adoptat
+        </label>
+        <input type="date" name="data_arribada" required>
+        <select name="id_centre">
+            {% for centre in centres %}
+            <option value="{{ centre.id_centre }}">{{ centre.nom }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Afegir</button>
+    </form>
+    <a href="{{ url_for('menu') }}" class="volver-menu">Tornar al menú</a>
+</div>
+</body>
+</html>

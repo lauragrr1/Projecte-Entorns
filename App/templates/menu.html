@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <title>Menú Principal</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>📋 Menú Principal</h2>
-    <ul>
-        <li><a href="/llistat">1. Veure llistat de gats</a></li>
-        <li><a href="/afegir">2. Afegir un gat</a></li>
-        {% if session['rol'] == 'admin' %}
-            <li><a href="/adopcions">3. Controlar adopcions</a></li>
-        {% endif %}
-        <li><a href="/logout">Sortir</a></li>
+    <nav>
+    <ul class="menu-nav">
+        <li><a href="{{ url_for('listar_gats') }}">Llistar Gats</a></li>
+        <li><a href="{{ url_for('afegir_gat') }}">Afegir Gat</a></li>
+        <li>{% if session['rol'] == 'admin' %}
+    <li><a href="{{ url_for('gestionar_adopcions') }}">Controlar Adopcions</a></li>
+{% endif %}
+        <li><a href="{{ url_for('logout') }}">Tancar Sessió</a></li>
     </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Benvingut/da, {{ nom_complet }}!</h1>
+    </div>
+<img src="https://cdn.royalcanin-weshare-online.io/fSI-PmYBaxEApS7LXAYi/v1/ec34h-tips-for-training-your-kitten-hero-cat" alt="Gat">
 </body>
 </html>
