@@ -73,11 +73,7 @@ En local PHPMyAdmin
 
 ## - Diagrama de classes del Frontend
 
-- ![FrontEnd](frontEnd.PNG)
-
-## - 1 cas d'ús detallat a escollir
-
-(Afegir gat)
+![FrontEnd](frontEnd.PNG)
 
 ## - Diagrama de seqüència del Login
 
@@ -94,6 +90,6 @@ Pantalla inicial
 
 - Tests unitaris de la part programada
 
-[text](App/test_app.py)
+[Codi Test Unitaris](App/test_app.py)
 
 ![Ok](testuni.png)
