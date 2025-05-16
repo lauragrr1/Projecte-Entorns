@@ -52,7 +52,7 @@ https://github.com/users/lauragrr1/projects/10
 
 ## - BBDD Mysql
 
-[Base de Dades](App/basedatos.py)
+En local PHPMyAdmin
 
 ## - Diagrama d'arquitectura Client / Servidor
 
@@ -88,7 +88,12 @@ Usuari → Client Web → POST /login → Backend → MySQL
 ## - Wireframes del Login i les següents pantalles (mínim 1)
 
 Pantalla inicial
-![Login](Login.png)
 
-- Desenvolupament d'una part petita.
+![LogIn](<login (1).png>)
+
+
 - Tests unitaris de la part programada
+
+[text](App/test_app.py)
+
+![Ok](testuni.png)
