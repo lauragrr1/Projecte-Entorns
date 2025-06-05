@@ -1,5 +1,5 @@
 from dao import DAOUsuari, DAOGat, DAOAdopcio
-from models import Adopcio
+from models import Adopcio, Gat
 from datetime import date
 
 class Webservice:
@@ -31,3 +31,22 @@ class Webservice:
 
     def llistarAdopcions(self):
         return self.adopcio_dao.getAdopcions()
+
+    def actualitzarAdopcio(self, adopcio):
+        self.adopcio_dao.actualitzarAdopcio(adopcio)
+
+    def crearGat(self, gat):
+        self.gat_dao.crearGat(gat)
+
+    def actualitzarGat(self, gat):
+        self.gat_dao.actualitzarGat(gat)
+
+    def eliminarGat(self, id_gat):
+        self.gat_dao.eliminarGat(id_gat)
+
+    def getGatById(self, id_gat):
+        gats = self.gat_dao.getAllGats()
+        for g in gats:
+            if g.id_gat == id_gat:
+                return g
+        return None
