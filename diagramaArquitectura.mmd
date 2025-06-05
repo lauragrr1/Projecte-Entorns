@@ -1,5 +1,5 @@
 graph TD
-  Usuari[Usuari (Terminal)] -->|1. Envia nom i contrasenya| ClientApp[Aplicació Client (Terminal)]
+  Usuari[Usuari Terminal] -->|1. Envia nom i contrasenya| ClientApp[Aplicacio Client Terminal]
   ClientApp -->|2. Envia credencials| Backend[Servidor Backend]
   Backend -->|3. Consulta dades| DAOUsuaris[DAO Usuaris]
   DAOUsuaris -->|4. Consulta a| BBDD[(Base de dades MySQL)]
