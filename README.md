@@ -56,7 +56,7 @@ En local PHPMyAdmin
 
 ## - Diagrama d'arquitectura Client / Servidor
 
-![Diagrama d'arquitectura](diagramaArquitectura.png)
+![Diagrama d'arquitectura](diagramaArquitectura.mmd)
 
 ## - Descripció dels End-points del WebService
 
@@ -82,7 +82,6 @@ En local PHPMyAdmin
 ## - Diagrama de seqüència del Login
 
 ![Sequencia](sequencia.mmd)
-
 
 ## - Wireframes del Login i les següents pantalles (mínim 1)
 
