@@ -1,16 +1,9 @@
-flowchart LR
-    subgraph Cliente (Terminal)
-        CLI[Interfaz por Terminal]
-        CLI -->|Login / Ver gatos / Adoptar| ClientSocket
-    end
+graph TD
+    Usuari[Usuari]
+    Frontend[Frontend (HTML + JS)]
+    Backend[Backend (Flask)]
+    BBDD[BBDD (MySQL)]
 
-    subgraph Comunicación
-        ClientSocket -->|Petición (TCP)| ServerSocket
-        ServerSocket -->|Respuesta| ClientSocket
-    end
-
-    subgraph Servidor
-        ServerSocket --> Controller[Controlador (webservice.py)]
-        Controller --> DAO[DAO (dao/*.py)]
-        DAO --> DB[(Base de Datos MySQL\nSistemaAdopcions)]
-    end
+    Usuari --> Frontend
+    Frontend --> Backend
+    Backend --> BBDD
