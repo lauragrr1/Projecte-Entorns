@@ -80,24 +80,8 @@ En local PHPMyAdmin
 ![FrontEnd](frontEnd.PNG)
 
 ## - Diagrama de seqüència del Login
-Usuari
-  |
-  |---> [1] Introdueix usuari i contrasenya
-  |
-Frontend (HTML + JS)
-  |
-  |---> [2] POST /login amb credencials -----------> Backend (Flask)
-  |                                                |
-  |                                                |---> [3] SELECT * FROM usuaris WHERE nom = ? AND contrasenya = ? ---> BBDD (MySQL)
-  |                                                |
-  |                                                |<--- [4] Resultat: credencials vàlides o no
-  |                                                |
-  |<--- [5] 200 OK + token  o  401 Unauthorized ---|
-  |
-  |---> [6] Si OK → desa token + redirigeix a menú
-  |       Si KO → mostra error a l’usuari
-  |
-Usuari veu resultat
+
+![Sequencia](sequencia.mmd)
 
 
 ## - Wireframes del Login i les següents pantalles (mínim 1)
