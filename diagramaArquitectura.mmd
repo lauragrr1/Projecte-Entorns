@@ -1,3 +1,4 @@
 flowchart LR
-    Client[Navegador o Client Web] -->|HTTP JSON| API[Servidor Python - Flask o FastAPI]
-    API -->|Consultes SQL| BBDD[Base de Dades MySQL]
+    Client[Navegador o Client Terminal] -->|HTTP JSON / Socket JSON| API[Servidor Python - Flask / FastAPI / Socket Server]
+    API -->|Llamadas a| DAO[Data Access Object (DAO)]
+    DAO -->|Consultas SQL| BBDD[Base de Datos My
