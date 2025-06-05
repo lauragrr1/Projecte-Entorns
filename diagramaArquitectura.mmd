@@ -1,4 +1,16 @@
 flowchart LR
-    Client[Navegador o Client Terminal] -->|HTTP JSON / Socket JSON| API[Servidor Python - Flask / FastAPI / Socket Server]
-    API -->|Llamadas a| DAO[Data Access Object (DAO)]
-    DAO -->|Consultas SQL| BBDD[Base de Datos My
+    subgraph Cliente (Terminal)
+        CLI[Interfaz por Terminal]
+        CLI -->|Login / Ver gatos / Adoptar| ClientSocket
+    end
+
+    subgraph Comunicación
+        ClientSocket -->|Petición (TCP)| ServerSocket
+        ServerSocket -->|Respuesta| ClientSocket
+    end
+
+    subgraph Servidor
+        ServerSocket --> Controller[Controlador (webservice.py)]
+        Controller --> DAO[DAO (dao/*.py)]
+        DAO --> DB[(Base de Datos MySQL\nSistemaAdopcions)]
+    end
