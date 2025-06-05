@@ -1,24 +1,83 @@
-graph TD
-    %% Pantalles principals del front-end
-    Inici["Pàgina d'inici"]
-    VeureGats["Llistat de Gats Disponibles"]
-    AfegirGat["Formulari Afegir Gat"]
-    GestionarAdopcions["Gestió d'Adopcions"]
-    Login["Login Usuari"]
-    PerfilUsuari["Perfil Usuari"]
+---
+title: Diagrama de clases Frontend | Adopción de Gatos
+---
 
-    %% Relacions entre pantalles
-    Inici --> VeureGats
-    Inici --> Login
-    Login --> PerfilUsuari
-    PerfilUsuari --> GestionarAdopcions
-    PerfilUsuari --> AfegirGat
+classDiagram
+    Vista ..> UsuariDAO : Consulta a
+    UsuariDAO ..> Vista : Respon la petició
+    UsuariDAO ..> CentreAcollidaDAO : Conté info centres
+    CentreAcollidaDAO ..> UsuariDAO : Respon info centres
+    Vista ..> GatDAO : Consulta a
+    GatDAO ..> Vista : Respon info gat
+    GatDAO ..> CentreAcollidaDAO : Consulta centre gat
+    Vista ..> AdopcioDAO : Consulta adopcions
+    AdopcioDAO ..> Vista : Respon info adopcio
+    
+    class Vista{
+        +mostrarUsuaris()
+        +mostrarCentres()
+        +mostrarGats()
+        +mostrarAdopcions()
+        +mostrarError(missatge)
+    }
 
-    %% Relacions amb entitats del sistema
-    VeureGats -->|Consulta| Gat[(Taula gat)]
-    AfegirGat -->|Inserta| Gat
-    GestionarAdopcions -->|Consulta / Afegeix / Elimina| Adopcio[(Taula adopcio)]
-    GestionarAdopcions -->|Consulta| Usuari[(Taula usuari)]
-    GestionarAdopcions -->|Consulta| Gat
-    PerfilUsuari -->|Consulta| Usuari
-    Gat -->|Pertany a| Centro[(Taula centro)]
+    class UsuariDAO{
+        +getAllUsuaris(): List
+        +getUsuariByEmail(email): Usuari
+        +login(email, password): boolean
+    }
+
+    class CentreAcollidaDAO{
+        +getAllCentres(): List
+        +getCentreById(id): CentreAcollida
+    }
+
+    class GatDAO{
+        +getAllGats(): List
+        +getGatById(id): Gat
+        +getGatsByCentre(id_centre): List
+    }
+
+    class AdopcioDAO{
+        +getAllAdopcions(): List
+        +getAdopcionsByUsuari(id_usuari): List
+        +crearAdopcio(adopcio): boolean
+    }
+
+    class Usuari{
+        -id_usuari: int
+        +nom_complet: string
+        +email: string
+        -contrasenya: string
+        +telefon: string
+        +rol: string
+    }
+
+    class CentreAcollida{
+        -id_centre: int
+        +nom: string
+        +adreca: string
+    }
+
+    class Gat{
+        -id_gat: int
+        +nom: string
+        +edat: int
+        +raça: string
+        +sexe: string
+        +esterilitzat: boolean
+        +adoptat: boolean
+        +data_arribada: date
+        -id_centre: int
+    }
+
+    class Adopcio{
+        -id_adopcio: int
+        -id_usuari: int
+        -id_gat: int
+        +data_adopcio: date
+        +estat: string
+        +comentaris: string
+    }
+
+
