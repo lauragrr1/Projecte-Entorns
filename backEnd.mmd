@@ -1,96 +1,19 @@
----
-title: Diagrama de clases Backend | Adopción de Gatos
----
+flowchart TD
+    subgraph Servidor
+        Srv[server.py\n(Manejador de conexiones)]
+        Ctrl[webservice.py\n(Controlador de lógica)]
+        DAO[dao/*.py\n(Capa DAO)]
+    end
 
-classDiagram
-    Webservice --> DAOUsuari : demana info de l'usuari
-    DAOUsuari --> Usuari : obté info de l'usuari
-    DAOUsuari --> Webservice : respon amb info de l'usuari si existeix
+    subgraph BD
+        DB[(Base de Datos\nMySQL - SistemaAdopcions)]
+    end
 
-    Webservice --> DAOCentreAcollida : demana info del centre
-    DAOCentreAcollida --> CentreAcollida : obté info del centre
-    DAOCentreAcollida --> Webservice : respon info del centre
+    Srv --> Ctrl
+    Ctrl --> DAO
+    DAO --> DB
+    DB --> DAO
+    DAO --> Ctrl
+    Ctrl --> Srv
 
-    Webservice --> DAOGat : demana info del gat
-    DAOGat --> Gat : obté info del gat
-    DAOGat --> Webservice : respon info del gat
 
-    Webservice --> DAOAdopcio : demana info d'adopció
-    DAOAdopcio --> Adopcio : obté info d'adopció
-    DAOAdopcio --> Webservice : respon info d'adopció
-
-    class Webservice {
-        + getUsuariInfo(id)
-        + getCentreInfo(id)
-        + getGatInfo(id)
-        + getAdopcioInfo(id)
-        + crearUsuari(Usuari)
-        + crearGat(Gat)
-        + crearAdopcio(Adopcio)
-        + actualitzarUsuari(Usuari)
-        + actualitzarGat(Gat)
-        + actualitzarAdopcio(Adopcio)
-    }
-
-    class DAOUsuari {
-        + List<Usuari> usuaris
-        + getUsuariById(id)
-        + getUsuariByEmail(email)
-        + saveUsuari(Usuari)
-    }
-
-    class DAOCentreAcollida {
-        + List<CentreAcollida> centres
-        + getCentreById(id)
-        + saveCentre(CentreAcollida)
-    }
-
-    class DAOGat {
-        + List<Gat> gats
-        + getGatById(id)
-        + getGatsByCentre(id_centre)
-        + saveGat(Gat)
-    }
-
-    class DAOAdopcio {
-        + List<Adopcio> adopcions
-        + getAdopcioById(id)
-        + getAdopcionsByUsuari(id_usuari)
-        + saveAdopcio(Adopcio)
-    }
-
-    class Usuari {
-        + int id_usuari
-        + String nom_complet
-        + String email
-        + String contrasenya
-        + String telefon
-        + String rol
-    }
-
-    class CentreAcollida {
-        + int id_centre
-        + String nom
-        + String adreca
-    }
-
-    class Gat {
-        + int id_gat
-        + String nom
-        + int edat
-        + String raça
-        + String sexe
-        + Boolean esterilitzat
-        + Boolean adoptat
-        + Date data_arribada
-        + int id_centre
-    }
-
-    class Adopcio {
-        + int id_adopcio
-        + int id_usuari
-        + int id_gat
-        + Date data_adopcio
-        + String estat
-        + String comentaris
-    }
