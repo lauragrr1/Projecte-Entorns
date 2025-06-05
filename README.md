@@ -69,9 +69,13 @@ En local PHPMyAdmin
 
 ## - Diagrama de classes del Backend
 
-![BackEnd](backEnd.png)
+![BackEnd](backEnd.mmd)
 
-## - Diagrama de classes del Frontend
+## - Diagrama de classes del Backend
+
+![FrontEnd](frontEnd.mmd)
+
+## - Pantalles app
 
 ![FrontEnd](frontEnd.PNG)
 
