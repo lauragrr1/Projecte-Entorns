@@ -1,38 +1,96 @@
+---
+title: Diagrama de clases Backend | Adopción de Gatos
+---
+
 classDiagram
-direction BT
-    class Usuari {
-	    +int id_usuari
-	    +string nom_complet
-	    +string email
-	    +string contrasenya
-	    +string telefon
-	    +string rol
-    }
-    class Gat {
-	    +int id_gat
-	    +string nom
-	    +int edat
-	    +string raça
-	    +string sexe
-	    +boolean esterilitzat
-	    +boolean adoptat
-	    +date data_arribada
-	    +int id_centre
-    }
-    class Centre_Acollida {
-	    +int id_centre
-	    +string nom
-	    +string adreça
-    }
-    class Adopcio {
-	    +int id_adopcio
-	    +int id_usuari
-	    +int id_gat
-	    +date data_adopcio
-	    +string estat
-	    +string comentaris
+    Webservice --> DAOUsuari : demana info de l'usuari
+    DAOUsuari --> Usuari : obté info de l'usuari
+    DAOUsuari --> Webservice : respon amb info de l'usuari si existeix
+
+    Webservice --> DAOCentreAcollida : demana info del centre
+    DAOCentreAcollida --> CentreAcollida : obté info del centre
+    DAOCentreAcollida --> Webservice : respon info del centre
+
+    Webservice --> DAOGat : demana info del gat
+    DAOGat --> Gat : obté info del gat
+    DAOGat --> Webservice : respon info del gat
+
+    Webservice --> DAOAdopcio : demana info d'adopció
+    DAOAdopcio --> Adopcio : obté info d'adopció
+    DAOAdopcio --> Webservice : respon info d'adopció
+
+    class Webservice {
+        + getUsuariInfo(id)
+        + getCentreInfo(id)
+        + getGatInfo(id)
+        + getAdopcioInfo(id)
+        + crearUsuari(Usuari)
+        + crearGat(Gat)
+        + crearAdopcio(Adopcio)
+        + actualitzarUsuari(Usuari)
+        + actualitzarGat(Gat)
+        + actualitzarAdopcio(Adopcio)
     }
 
-    Usuari -- Adopcio : realitza
-    Gat -- Adopcio : és_adoptat
-    Centre_Acollida -- Gat : allotja
+    class DAOUsuari {
+        + List<Usuari> usuaris
+        + getUsuariById(id)
+        + getUsuariByEmail(email)
+        + saveUsuari(Usuari)
+    }
+
+    class DAOCentreAcollida {
+        + List<CentreAcollida> centres
+        + getCentreById(id)
+        + saveCentre(CentreAcollida)
+    }
+
+    class DAOGat {
+        + List<Gat> gats
+        + getGatById(id)
+        + getGatsByCentre(id_centre)
+        + saveGat(Gat)
+    }
+
+    class DAOAdopcio {
+        + List<Adopcio> adopcions
+        + getAdopcioById(id)
+        + getAdopcionsByUsuari(id_usuari)
+        + saveAdopcio(Adopcio)
+    }
+
+    class Usuari {
+        + int id_usuari
+        + String nom_complet
+        + String email
+        + String contrasenya
+        + String telefon
+        + String rol
+    }
+
+    class CentreAcollida {
+        + int id_centre
+        + String nom
+        + String adreca
+    }
+
+    class Gat {
+        + int id_gat
+        + String nom
+        + int edat
+        + String raça
+        + String sexe
+        + Boolean esterilitzat
+        + Boolean adoptat
+        + Date data_arribada
+        + int id_centre
+    }
+
+    class Adopcio {
+        + int id_adopcio
+        + int id_usuari
+        + int id_gat
+        + Date data_adopcio
+        + String estat
+        + String comentaris
+    }
