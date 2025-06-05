@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant Usuari
+    participant Frontend as Frontend (HTML + JS)
+    participant Backend as Backend (Flask)
+    participant BBDD as BBDD (MySQL)
+
+    Usuari->>Frontend: [1] Introdueix usuari i contrasenya
+    Frontend->>Backend: [2] POST /login amb credencials
+    Backend->>BBDD: [3] SELECT * FROM usuaris WHERE nom = ? AND contrasenya = ?
+    BBDD-->>Backend: [4] Resultat: credencials vàlides o no
+    Backend-->>Frontend: [5] 200 OK + token  o  401 Unauthorized
+    alt Credencials OK
+        Frontend->>Frontend: [6] Desa token + redirigeix a menú
+    else Credencials KO
+        Frontend->>Usuari: Mostra error a l’usuari
+    end
