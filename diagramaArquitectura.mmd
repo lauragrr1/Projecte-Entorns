@@ -1,12 +1,9 @@
 graph TD
-    Usuari["Usuari"]
-    Frontend["Frontend (HTML + JS)"]
-    Backend["Backend (Flask)"]
-    BBDD["Base de dades MySQL"]
-
-    Usuari -->|1. Introdueix usuari i contrasenya| Frontend
-    Frontend -->|2. POST /login amb credencials| Backend
-    Backend -->|3. SELECT * FROM usuaris WHERE nom = ? AND contrasenya = ?| BBDD
-    BBDD -->|4. Resultat: credencials vàlides o no| Backend
-    Backend -->|5. 200 OK + token o 401 Unauthorized| Frontend
-    Frontend -->|6. Desa token i redirigeix a menú o mostra error| Usuari
+  Usuari[Usuari (Terminal)] -->|1. Envia nom i contrasenya| ClientApp[Aplicació Client (Terminal)]
+  ClientApp -->|2. Envia credencials| Backend[Servidor Backend]
+  Backend -->|3. Consulta dades| DAOUsuaris[DAO Usuaris]
+  DAOUsuaris -->|4. Consulta a| BBDD[(Base de dades MySQL)]
+  BBDD -->|5. Resultat consulta| DAOUsuaris
+  DAOUsuaris -->|6. Retorna usuari o error| Backend
+  Backend -->|7. Retorna resposta autenticació| ClientApp
+  ClientApp -->|8. Mostra resultat a usuari| Usuari
