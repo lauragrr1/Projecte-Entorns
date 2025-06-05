@@ -32,9 +32,9 @@ L’aplicació està basada en una arquitectura client-servidor:
 
 - Frontend:
 
-    - Interfície web senzilla basada en wireframes, amb possibilitat d'ampliació utilitzant HTML, CSS i JavaScript.
+    - Feta en terminal, amb possibilitat d'ampliació utilitzant HTML, CSS i JavaScript.
 
-    - Permet a l’usuari interactuar amb les funcionalitats del sistema de manera intuïtiva i responsive.
+    - Permet a l’usuari interactuar amb les funcionalitats del sistema.
 
 ## - Requeriments Tècnics
 
@@ -76,9 +76,24 @@ En local PHPMyAdmin
 ![FrontEnd](frontEnd.PNG)
 
 ## - Diagrama de seqüència del Login
-
-Usuari → Client Web → POST /login → Backend → MySQL
-                             ← token / error
+Usuari
+  |
+  |---> [1] Introdueix usuari i contrasenya
+  |
+Frontend (HTML + JS)
+  |
+  |---> [2] POST /login amb credencials -----------> Backend (Flask)
+  |                                                |
+  |                                                |---> [3] SELECT * FROM usuaris WHERE nom = ? AND contrasenya = ? ---> BBDD (MySQL)
+  |                                                |
+  |                                                |<--- [4] Resultat: credencials vàlides o no
+  |                                                |
+  |<--- [5] 200 OK + token  o  401 Unauthorized ---|
+  |
+  |---> [6] Si OK → desa token + redirigeix a menú
+  |       Si KO → mostra error a l’usuari
+  |
+Usuari veu resultat
 
 
 ## - Wireframes del Login i les següents pantalles (mínim 1)
