@@ -13,8 +13,6 @@ L'aplicació Adopta un Gatito és una eina digital dissenyada per facilitar i ge
 
  - Gestió d’usuaris: el sistema inclou funcionalitats bàsiques d’autenticació i autorització. Els rols principals són:
 
-    - Visitants: poden consultar el catàleg de gats.
-
     - Usuaris registrats: poden iniciar sessió i sol·licitar adopcions.
 
     - Administradors: poden afegir o eliminar gats i gestionar les adopcions.
